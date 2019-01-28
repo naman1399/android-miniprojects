@@ -13,23 +13,24 @@ public class MainActivity extends AppCompatActivity {
 
     int randomNumber;
 
+    public void makeToast(String string) {
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_SHORT).show();
+    }
+
     public void guessButton(View view) {
 
         EditText editText = (EditText) findViewById(R.id.editText);
 
         int inputValue = Integer.parseInt(editText.getText().toString());
 
-        String message = "";
-
         if (inputValue < randomNumber) {
-            message = "Higher!";
+            makeToast("Higher!");
         } else if (inputValue > randomNumber) {
-            message = "Lower!";
+            makeToast("Lower!");
         } else {
-            message = "That's right! Try again!";
+            makeToast("That's right! Try again!");
+            randomNumber = new Random().nextInt(20) + 1;
         }
-
-        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
 
     }
 
